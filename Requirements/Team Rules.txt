@@ -1,0 +1,4 @@
+Roqaya => Hacknplan
+Medhat => Design class diagram and ERD
+Marwan => Use case diagram & sequence diagram
+Eissa => activity diagram
