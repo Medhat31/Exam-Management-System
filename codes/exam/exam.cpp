@@ -1,36 +1,37 @@
 #include "exam.h"
 
+
 // Setters
-void Exam::setExamID(int _exam_id)
+void Exam::setExamID(int _examId)
 {
-    exam_id = _exam_id;
+    examId = _examId;
 }
 
-void Exam::setExamDate(string _exam_date) {
-    exam_date = _exam_date;
+void Exam::setExamDate(string _examDate) {
+    examDate = _examDate;
 }
 
 void Exam::setduration(float _duration) {
     duration = _duration;
 }
 
-void Exam::setCourseID(int _course_id) {
+void Exam::setCourseID(int _courseId) {
     // Note: There's no course_id member variable in the header
     // You may need to add it to the private section
     // For now, this is a placeholder implementation
 }
 
-void Exam::seInstructorID(int _instructor_id) {
-    instructor_id = _instructor_id;
+void Exam::seInstructorID(int _instructorId) {
+    instructorId = _instructorId;
 }
 
 // Getters
 int Exam::getExamID() {
-    return exam_id;
+    return examId;
 }
 
 string Exam::getExamDate() {
-    return exam_date;
+    return examDate;
 }
 
 float Exam::getDuration() {
@@ -45,23 +46,40 @@ int Exam::getCourseID() {
 }
 
 int Exam::getInstructorID() {
-    return instructor_id;
+    return instructorId;
 }
 
 // Question management methods
-void Exam::createQuestion(Question q) {
-    // Implementation for creating a question
-    // You might want to store questions in a container (vector, array, etc.)
-    // Example: questions.push_back(q);
+void Exam::createQuestion(sqlite3* db,Question q)
+{
+    char* errorMessage;
+    
+    // Construct SQL: INSERT INTO Questions (question_text, correct_answer, exam_id) ...
+    // Note: Ensure your Question class has getQuestionText() and getCorrectAnswer()
+    string sql = "INSERT INTO Questions (question_text, correct_answer, exam_id) VALUES ('" + 
+                 q.getQuestionText() + "', '" + 
+                 q.getCorrectAnswer() + "', " + 
+                 to_string(this->exam_id) + ");";
+
+    int rc = sqlite3_exec(db, sql.c_str(), NULL, 0, &errorMessage);
+
+    if (rc != SQLITE_OK) {
+        cout << "SQL Error in createQuestion: " << errorMessage << endl;
+        sqlite3_free(errorMessage);
+    } else {
+        cout << "Question added successfully!" << endl;
+    }
 }
 
-void Exam::updateQuestion(Question q) {
+void Exam::updateQuestion(sqlite3* db,Question q)
+{
     // Implementation for updating a question
     // You would typically search for the question by its ID and update it
     // Example: Find question with matching q_no and update its fields
 }
 
-void Exam::deleteQuetion(Question q) {
+void Exam::deleteQuetion(sqlite3* db,int questionId) 
+{
     // Implementation for deleting a question
     // You would typically search for the question by its ID and remove it
     // Example: Find question with matching q_no and remove from container

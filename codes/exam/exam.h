@@ -2,24 +2,26 @@
 #define EXAM_H
 
 #include <string>
-#include "question/ques.h"
+#include <sqlite3.h>
+#include <iostream>
+
 using namespace std;
 
 class Exam {
 private:
-    int exam_id;
-    string exam_name;
-    string exam_date;
+    int examId;
+    string examName;
+    string examDate;
     float duration;
-    int instructor_id;
+    int instructorId;
 
 public:
     // Setters
-    void setExamID(int _exam_id);
-    void setExamDate(string _exam_date);
+    void setExamID(int _examId);
+    void setExamDate(string _examDate);
     void setduration(float _duration);
-    void setCourseID(int _course_id);
-    void seInstructorID(int _instructor_id);
+    void setCourseID(int _courseId);
+    void seInstructorID(int _instructorId);
     
     // Getters
     int getExamID();
@@ -29,9 +31,9 @@ public:
     int getInstructorID();
     
     // Question management methods
-    void createQuestion(Question q);
-    void updateQuestion(Question q);
-    void deleteQuetion(Question q);
+    void createQuestion(sqlite3* db,Question q);
+    void updateQuestion(sqlite3* db,Question q);
+    void deleteQuetion(sqlite3* db,int questionId);
 };
 
 #endif
