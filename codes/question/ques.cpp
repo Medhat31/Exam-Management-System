@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include "ques.h"
 
 // Setters
@@ -6,8 +6,8 @@ void Question::setQNo(int qNo) {
     quesNo = qNo;
 }
 
-void Question::setExamID(int _exam_id) {
-    examId = to_string(_exam_id);
+void Question::setExamID(int _examId) {
+    examId = to_string(_examId);
 }
 
 void Question::setContent(string _content) {

@@ -2,6 +2,7 @@
 #define QUESTION_H
 #include <iostream>
 #include <string>
+#include <iostream>
 using namespace std;
 class Question 
 {
@@ -17,7 +18,7 @@ class Question
     public:
     
     void setQNo (int qNo);
-    void setExamID(int _exam_id);
+    void setExamID(int _examId);
     void setContent(string _content);
     void setOption1(string _option1);
     void setOption2(string _option2);
