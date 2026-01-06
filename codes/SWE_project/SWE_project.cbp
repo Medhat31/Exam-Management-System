@@ -34,6 +34,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Admin.h" />
 		<Unit filename="include/DB_Manipulation.h" />
 		<Unit filename="include/User.h" />
 		<Unit filename="main.cpp" />
@@ -41,6 +42,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="sqlite3.h" />
+		<Unit filename="src/Admin.cpp" />
 		<Unit filename="src/DB_Manipulation.cpp" />
 		<Extensions>
 			<code_completion />
