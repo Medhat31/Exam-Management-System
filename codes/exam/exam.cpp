@@ -15,11 +15,7 @@ void Exam::setduration(float _duration) {
     duration = _duration;
 }
 
-void Exam::setCourseID(int _courseId) {
-    // Note: There's no course_id member variable in the header
-    // You may need to add it to the private section
-    // For now, this is a placeholder implementation
-}
+
 
 void Exam::seInstructorID(int _instructorId) {
     instructorId = _instructorId;
@@ -38,12 +34,7 @@ float Exam::getDuration() {
     return duration;
 }
 
-int Exam::getCourseID() {
-    // Note: There's no course_id member variable in the header
-    // You may need to add it to the private section
-    // For now, returning 0 as placeholder
-    return 0;
-}
+
 
 int Exam::getInstructorID() {
     return instructorId;
@@ -56,10 +47,10 @@ void Exam::createQuestion(sqlite3* db,Question q)
     
     // Construct SQL: INSERT INTO Questions (question_text, correct_answer, exam_id) ...
     // Note: Ensure your Question class has getQuestionText() and getCorrectAnswer()
-    string sql = "INSERT INTO Questions (question_text, correct_answer, exam_id) VALUES ('" + 
+    string sql = "INSERT INTO Questions (exam_id,content,answer,option1,option2,option3,option4) VALUES ('" + 
                  q.getQuestionText() + "', '" + 
                  q.getCorrectAnswer() + "', " + 
-                 to_string(this->exam_id) + ");";
+                 to_string(this->examId) + ");";
 
     int rc = sqlite3_exec(db, sql.c_str(), NULL, 0, &errorMessage);
 
@@ -71,16 +62,44 @@ void Exam::createQuestion(sqlite3* db,Question q)
     }
 }
 
-void Exam::updateQuestion(sqlite3* db,Question q)
+void Exam::updateQuestion(sqlite3* db, Question q)
 {
-    // Implementation for updating a question
-    // You would typically search for the question by its ID and update it
-    // Example: Find question with matching q_no and update its fields
+    char* errorMessage;
+
+    // We use UPDATE to change existing data. 
+    // We identify the specific question using the 'q_no' column.
+    string sql = "UPDATE Questions SET "
+                 "content = '" + q.getContent() + "', "
+                 "option1 = '" + q.getOption1() + "', "
+                 "option2 = '" + q.getOption2() + "', "
+                 "option3 = '" + q.getOption3() + "', "
+                 "option4 = '" + q.getOption4() + "', "
+                 "answer = '" + q.getAnswer() + "' "
+                 "WHERE q_no = " + to_string(q.getQNo()) + ";";
+
+    int rc = sqlite3_exec(db, sql.c_str(), NULL, 0, &errorMessage);
+
+    if (rc != SQLITE_OK) {
+        cout << "SQL Error in updateQuestion: " << errorMessage << endl;
+        sqlite3_free(errorMessage);
+    } else {
+        cout << "Question " << q.getQNo() << " updated successfully!" << endl;
+    }
 }
 
-void Exam::deleteQuetion(sqlite3* db,int questionId) 
+void Exam::deleteQuestion(sqlite3* db, int questionId) 
 {
-    // Implementation for deleting a question
-    // You would typically search for the question by its ID and remove it
-    // Example: Find question with matching q_no and remove from container
+    char* errorMessage;
+
+    // DELETE removes the entire row where the q_no matches the questionId provided.
+    string sql = "DELETE FROM Questions WHERE q_no = " + to_string(questionId) + ";";
+
+    int rc = sqlite3_exec(db, sql.c_str(), NULL, 0, &errorMessage);
+
+    if (rc != SQLITE_OK) {
+        cout << "SQL Error in deleteQuestion: " << errorMessage << endl;
+        sqlite3_free(errorMessage);
+    } else {
+        cout << "Question " << questionId << " deleted successfully!" << endl;
+    }
 }

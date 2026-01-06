@@ -27,13 +27,12 @@ public:
     int getExamID();
     string getExamDate();
     float getDuration();
-    int getCourseID();
     int getInstructorID();
     
     // Question management methods
     void createQuestion(sqlite3* db,Question q);
     void updateQuestion(sqlite3* db,Question q);
-    void deleteQuetion(sqlite3* db,int questionId);
+    void deleteQuestion(sqlite3* db,int questionId);
 };
 
 #endif
