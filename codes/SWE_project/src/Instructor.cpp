@@ -1,22 +1,6 @@
-#ifndef INSTRUCTOR_H
-#define INSTRUCTOR_H
+#include "Instructor.h"
 
-#include "User.h"
-#include <iostream>
-#include <sqlite3.h>
-
-using namespace std;
-
-class Instructor : public User
-{
-public:
-    // Constructor
-    Instructor() : User(0, "", "") {}
-
-    // Login (override)
-    bool login(sqlite3* db,
-               const string& username,
-               const string& password) override
+ bool Instuctor::login(sqlite3* db, const string& username, const string& password) override
     {
         string sql =
             "SELECT instructor_id FROM Instructors "
@@ -42,11 +26,8 @@ public:
         return false;
     }
 
-    // Add exam
-    void addExam(sqlite3* db,
-                 const string& examName,
-                 const string& examDate,
-                 int duration)
+
+    void Instructor::addExam(sqlite3* db, const string& examName, const string& examDate, int duration)
     {
         string sql =
             "INSERT INTO Exams (exam_name, exam_date, duration, instructor_id) "
@@ -66,15 +47,8 @@ public:
         cout << "Exam added successfully.\n";
     }
 
-    // Add question
-    void addQuestion(sqlite3* db,
-                     int exam_id,
-                     const string& content,
-                     const string& o1,
-                     const string& o2,
-                     const string& o3,
-                     const string& o4,
-                     const string& correct)
+     void Instructor::addQuestion(sqlite3* db, int exam_id, const string& content, const string& o1, const string& o2,
+                      const string& o3, const string& o4, const string& correct)
     {
         string sql =
             "INSERT INTO Questions "
@@ -98,8 +72,7 @@ public:
         cout << "Question added successfully.\n";
     }
 
-    // View specific student result
-    void viewStudentResult(sqlite3* db, int student_id, int exam_id)
+      void Instructor::viewStudentResult(sqlite3* db, int student_id, int exam_id)
     {
         string sql =
             "SELECT student_degree FROM Students_Exams "
@@ -124,8 +97,7 @@ public:
         sqlite3_finalize(stmt);
     }
 
-    // View all results for an exam
-    void viewAllResults(sqlite3* db, int exam_id)
+     void Instructor::viewAllResults(sqlite3* db, int exam_id)
     {
         string sql =
             "SELECT Students.name, student_degree "
@@ -146,6 +118,3 @@ public:
 
         sqlite3_finalize(stmt);
     }
-};
-
-#endif

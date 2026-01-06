@@ -1,22 +1,6 @@
-#ifndef STUDENT_H
-#define STUDENT_H
+#include "Student.h"
 
-#include "User.h"
-#include <iostream>
-#include <sqlite3.h>
-
-using namespace std;
-
-class Student : public User
-{
-public:
-    // Constructor
-    Student() : User(0, "", "") {}
-
-    // Login (override)
-    bool login(sqlite3* db,
-               const string& username,
-               const string& password) override
+ bool Student::login(sqlite3* db, const string& username, const string& password) override
     {
         string sql =
             "SELECT student_id FROM Students "
@@ -42,8 +26,9 @@ public:
         return false;
     }
 
-    // View available exams
-    void showAvailableExams(sqlite3* db)
+    // ================================================================
+
+    void Student::showAvailableExams(sqlite3* db)
     {
         string sql = "SELECT exam_id, exam_name FROM Exams;";
         sqlite3_stmt* stmt;
@@ -60,8 +45,9 @@ public:
         sqlite3_finalize(stmt);
     }
 
-    // Take exam
-    void takeExam(sqlite3* db, int exam_id)
+    // ================================================================
+
+        void Student::takeExam(sqlite3* db, int exam_id)
     {
         string sql =
             "SELECT content, option1, option2, option3, option4, answer "
@@ -112,9 +98,8 @@ public:
 
         cout << "\nYour Score: " << score << "%\n";
     }
-
-    // View my grades
-    void viewMyGrades(sqlite3* db)
+    // ================================================================
+        void Student::viewMyGrades(sqlite3* db)
     {
         string sql =
             "SELECT Exams.exam_name, student_degree "
@@ -135,6 +120,3 @@ public:
 
         sqlite3_finalize(stmt);
     }
-};
-
-#endif
