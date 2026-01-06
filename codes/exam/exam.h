@@ -4,6 +4,7 @@
 #include <string>
 #include <sqlite3.h>
 #include <iostream>
+#include <codes/question/ques.h>
 
 using namespace std;
 

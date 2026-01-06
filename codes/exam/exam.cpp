@@ -48,8 +48,8 @@ void Exam::createQuestion(sqlite3* db,Question q)
     // Construct SQL: INSERT INTO Questions (question_text, correct_answer, exam_id) ...
     // Note: Ensure your Question class has getQuestionText() and getCorrectAnswer()
     string sql = "INSERT INTO Questions (exam_id,content,answer,option1,option2,option3,option4) VALUES ('" + 
-                 q.getQuestionText() + "', '" + 
-                 q.getCorrectAnswer() + "', " + 
+                 q.getContent() + "', '" + 
+                 q.getAnswer() + "', " + 
                  to_string(this->examId) + ");";
 
     int rc = sqlite3_exec(db, sql.c_str(), NULL, 0, &errorMessage);

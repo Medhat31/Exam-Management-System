@@ -2,7 +2,6 @@
 #define QUESTION_H
 #include <iostream>
 #include <string>
-#include <iostream>
 using namespace std;
 class Question 
 {
