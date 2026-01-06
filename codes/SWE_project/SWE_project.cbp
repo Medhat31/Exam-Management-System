@@ -12,6 +12,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="include" />
 				</Compiler>
@@ -32,16 +33,28 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Admin.h" />
 		<Unit filename="include/DB_Manipulation.h" />
+		<Unit filename="include/Instructor.h" />
+		<Unit filename="include/Student.h" />
 		<Unit filename="include/User.h" />
+		<Unit filename="include/exam.h" />
+		<Unit filename="include/ques.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="sqlite3.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="sqlite3.h" />
+		<Unit filename="src/Admin.cpp" />
 		<Unit filename="src/DB_Manipulation.cpp" />
+		<Unit filename="src/Instructor.cpp" />
+		<Unit filename="src/Student.cpp" />
+		<Unit filename="src/User.cpp" />
+		<Unit filename="src/exam.cpp" />
+		<Unit filename="src/ques.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

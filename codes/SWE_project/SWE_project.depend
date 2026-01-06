@@ -64,7 +64,7 @@
 	<sys/uio.h>
 	<math.h>
 
-1764352243 source:e:\project\exam-management-system\codes\swe_project\sqlite3.c
+1767704199 source:e:\project\exam-management-system\codes\swe_project\sqlite3.c
 	<vxWorks.h>
 	<pthread.h>
 	"mingw.h"
@@ -208,4 +208,86 @@
 
 1767558000 source:e:\iti\documents\11 - software engineering\project\codes\swe_project\src\db_manipulation.cpp
 	"DB_Manipulation.h"
+
+1767730637 source:e:\project\exam-management-system\codes\swe_project\main.cpp
+	<iostream>
+	<string>
+	"sqlite3.h"
+	"DB_Manipulation.h"
+	"Admin.h"
+	"Instructor.h"
+	"Student.h"
+	"exam.h"
+	<iostream>
+	<vector>
+	<string>
+	<thread>
+	<chrono>
+	<cstdlib>
+
+1767704198 e:\project\exam-management-system\codes\swe_project\include\db_manipulation.h
+	<iostream>
+	"../sqlite3.h"
+	<string>
+
+1767704199 e:\project\exam-management-system\codes\swe_project\sqlite3.h
+	<stdarg.h>
+
+1767704199 source:e:\project\exam-management-system\codes\swe_project\src\db_manipulation.cpp
+	"DB_Manipulation.h"
+
+1767722175 source:e:\project\exam-management-system\codes\swe_project\src\exam.cpp
+	"exam.h"
+
+1767719510 e:\project\exam-management-system\codes\swe_project\include\exam.h
+	<string>
+	<iostream>
+	"DB_Manipulation.h"
+	"ques.h"
+	<sstream>
+
+1767717100 e:\project\exam-management-system\codes\swe_project\include\ques.h
+	<iostream>
+	<string>
+	"DB_Manipulation.h"
+
+1767719992 source:e:\project\exam-management-system\codes\swe_project\src\ques.cpp
+	"ques.h"
+	<sstream>
+	<cstdlib>
+
+1767723536 source:e:\project\exam-management-system\codes\swe_project\src\instructor.cpp
+	"Instructor.h"
+
+1767724340 e:\project\exam-management-system\codes\swe_project\include\instructor.h
+	"User.h"
+	<iostream>
+	"DB_Manipulation.h"
+
+1767727859 e:\project\exam-management-system\codes\swe_project\include\user.h
+	"DB_Manipulation.h"
+	<string>
+	<iostream>
+
+1767723547 source:e:\project\exam-management-system\codes\swe_project\src\student.cpp
+	"Student.h"
+
+1767724328 e:\project\exam-management-system\codes\swe_project\include\student.h
+	"User.h"
+	<iostream>
+	"DB_Manipulation.h"
+
+1767724294 source:e:\project\exam-management-system\codes\swe_project\src\admin.cpp
+	"Admin.h"
+	<iostream>
+
+1767727859 e:\project\exam-management-system\codes\swe_project\include\admin.h
+	<string>
+	<iostream>
+	"DB_Manipulation.h"
+	"User.h"
+	"Student.h"
+	"Instructor.h"
+
+1767727859 source:e:\project\exam-management-system\codes\swe_project\src\user.cpp
 
