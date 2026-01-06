@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,11 +34,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/DB_Manipulation.h" />
+		<Unit filename="include/User.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="sqlite3.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="sqlite3.h" />
+		<Unit filename="src/DB_Manipulation.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
