@@ -7,7 +7,7 @@
 using namespace std;
 
 void executeQuery(sqlite3* db, string sql);
-static int printData(void* NotUsed, int argc, char** argv, char** azColName);
-void executeSelect(sqlite3* db, string sql);
+static int printData(void* data, int argc, char** argv, char** azColName);
+bool executeSelect(sqlite3* db, const string& sql);
 
 #endif // DB_MANIPULATION_H

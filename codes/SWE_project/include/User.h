@@ -9,7 +9,7 @@ using namespace std;
 
 class User
 {
-private:
+protected:
     int id;
     string userName;
     string password;
@@ -17,8 +17,7 @@ private:
 
 public:
         // Constructor
-        User(int _id, string _userName, string _password){
-            this->id = _id;
+        User(string _userName, string _password){
             this->userName = _userName;
             this->password = _password;
         }
