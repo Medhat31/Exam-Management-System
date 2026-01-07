@@ -8,8 +8,6 @@ void executeQuery(sqlite3* db, string sql) {
     if (exit != SQLITE_OK) {
         cerr << "Error: " << messaggeError << endl;
         sqlite3_free(messaggeError);
-    } else {
-        cout << "Query executed successfully." << endl;
     }
 }
 

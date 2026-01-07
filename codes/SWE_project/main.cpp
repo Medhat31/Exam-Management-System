@@ -12,7 +12,7 @@
 #include <thread>
 #include <chrono>
 #include <cstdlib>
-
+#include <iomanip>
 using namespace std;
 
 void Welcome() {
@@ -33,7 +33,7 @@ void Welcome() {
     for (const string& line : msg_lines) {
         for (char c : line) {
             cout << c << flush;
-            this_thread::sleep_for(chrono::milliseconds(15));
+            this_thread::sleep_for(chrono::milliseconds(1));
         }
         cout << endl;
     }
@@ -47,6 +47,10 @@ using namespace std;
 int main() {
 Welcome();
     while  (true){
+            if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+        }
     sqlite3* db;
     int exit = sqlite3_open("exam.db", &db);
 
@@ -54,15 +58,15 @@ Welcome();
         cerr << "Error opening DB: " << sqlite3_errmsg(db) << endl;
         return -1;
     }
-
     int role;
+
     string username, pass;
 
 
     cout << "1) Admin 2) Instructor 3) Student  4) Exit"<< endl;
     cout << "Select your role: ";
     cin >> role;
-if (role == 4 ) break;
+if (role == 4) break;
     cout << "Enter Username: ";
     cin >> username;
     cout << "Enter Password: ";
@@ -175,7 +179,7 @@ if (role == 4 ) break;
         if (student.login(db, username, pass)) {
             cout << "\n[+] Login Success! Welcome " << username << ".\n";
             int choice = 0;
-            while (choice != 4) {
+            while (true) {
                 cout << "\n--- Student Dashboard ---\n";
                 cout << "1. Show Available Exams\n";
                 cout << "2. Take Exam\n";
@@ -203,6 +207,7 @@ if (role == 4 ) break;
     }
     default:
         cout << "Invalid Role Selection!\n";
+
     }
 
     sqlite3_close(db);
